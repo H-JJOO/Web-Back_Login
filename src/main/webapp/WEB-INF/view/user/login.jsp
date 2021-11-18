@@ -19,8 +19,8 @@
     <% }%>
     <div>
         <form action="/user/login" method="post">
-            <div><input type="text" name="uid" placeholder="user id"></div>
-            <div><input type="password" name="upw" placeholder="user password"></div>
+            <div><input type="text" name="uid" placeholder="user id" value="mic"></div>
+            <div><input type="password" name="upw" placeholder="user password" value="1111"></div>
             <div>
                 <input type="submit" value="login">
             </div>

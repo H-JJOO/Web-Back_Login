@@ -15,7 +15,13 @@ import java.util.List;
 public class BoardListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        List<BoardVO> list = BoardDAO.selBoardList();
+
+        req.setAttribute("data", list);
+
         MyUtils.disForward(req, res, "board/list");
+
+
 
     }
 }

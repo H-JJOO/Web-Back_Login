@@ -30,6 +30,10 @@ public class MyUtils {
             return defVal;
         }
     }
+    public static int getParameterInt(HttpServletRequest req, String key, int defVal) {
+        return parseStringToInt(req.getParameter(key), defVal);
+    }
+
 
     public static int getParameterInt(HttpServletRequest req, String key) {
 //        String strVal = req.getParameter(key);
@@ -39,7 +43,7 @@ public class MyUtils {
         return parseStringToInt(req.getParameter(key));
     }
 
-    //로그인 했으면 return iboard 값, 로그아웃 상태면 return 0;
+    //로그인 했으면 return pk 값, 로그아웃 상태면 return 0;
     public static int getLoginUserIboard(HttpServletRequest req) {
         UserVO loginUser = getLoginUser(req);
         return loginUser == null ? 0 : loginUser.getIuser();

@@ -2,14 +2,12 @@ package com.koreait.board2.board;
 
 import com.koreait.board2.MyUtils;
 import com.koreait.board2.model.BoardVO;
-import com.koreait.board2.model.UserVO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/board/mod")
@@ -21,14 +19,15 @@ public class BoardModServlet extends HttpServlet {
             return;
         }
 
-        int iboard = MyUtils.getParameterInt(req, "iboard");
-        BoardVO param = new BoardVO();
+        if (req.getAttribute("data") == null) {
+            int iboard = MyUtils.getParameterInt(req, "iboard");
+            BoardVO param = new BoardVO();
+            param.setIboard(iboard);
+            BoardVO data = BoardDAO.selBoardDetail(param);
+            req.setAttribute("data", data);
+        }
 
-        param.setIboard(iboard);
 
-        BoardVO data = BoardDAO.selBoardDetail(param);
-
-        req.setAttribute("data", data);
 
         MyUtils.disForward(req, res, "board/mod");
     }
@@ -54,6 +53,7 @@ public class BoardModServlet extends HttpServlet {
                 break;
             case 0:
                 req.setAttribute("err", "글 수정에 실패하였습니다.");
+                req.setAttribute("data", param);
                 doGet(req, res);
                 break;
         }

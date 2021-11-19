@@ -17,6 +17,7 @@
 <% } %>
 
 <div>
+    <!--쿼리스트링으로 iboard 값을 날리면 post 방식으로 iboard 값을 날려주는것과 동일한 효력을 가진다, 단 주소에 남는다-->
     <form action="/board/mod?iboard=${requestScope.data.iboard}" method="post" id="frm">
         <div>
             <input type="text" name="title" placeholder="title" value="${requestScope.data.title}">

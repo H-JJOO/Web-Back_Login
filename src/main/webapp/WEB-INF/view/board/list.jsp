@@ -5,6 +5,7 @@
 <%
     UserVO loginUser = (UserVO)session.getAttribute("loginUser");
     List<BoardVO> list = (List<BoardVO>)request.getAttribute("data");
+    int maxPage = (int)request.getAttribute("maxPage");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -51,7 +52,12 @@
             <td><%=vo.getRdt()%></td>
         </tr>
         <% } %>
-
     </table>
+    <div style="margin-top: 20px; display: flex; justify-content: center">
+        <% for (int i = 1; i <= maxPage; i++) { %>
+            <span><a href="/board/list?page=<%=i%>"><%=i%></a></span>&nbsp;
+        <% } %>
+        <!--&nbsp : 공백을 나타내는 html 문자-->
+    </div>
 </body>
 </html>

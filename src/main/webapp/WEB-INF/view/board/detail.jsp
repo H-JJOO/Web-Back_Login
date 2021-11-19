@@ -19,27 +19,28 @@
 
     <div>
         <%if (loginUser != null && vo.getWriter() == loginUser.getIuser()) { %>
-        <a href="/board/del?iboard=${data.iboard}"><input type="button" value="삭제"></a>
-        <a href="/board/mod?iboard=${data.iboard}"><input type="button" value="수정"></a>
+        <a href="/board/del?iboard=${requestScope.data.iboard}"><input type="button" value="삭제"></a>
+        <a href="/board/mod?iboard=${requestScope.data.iboard}"><input type="button" value="수정"></a>
         <% } %>
-        <div>${requestScope.err}</div>
         <a href="/board/list"><input type="button" value="리스트"></a>
+        <div>${requestScope.err}</div>
+
     </div>
 
     <div>
-        번호 : ${data.iboard}
+        번호 : ${requestScope.data.iboard}
     </div>
     <div>
-        제목 : ${data.title}
+        제목 : ${requestScope.data.title}
     </div>
     <div>
-        작성자 : ${data.writerNm}
+        작성자 : ${requestScope.data.writerNm}
     </div>
     <div>
-        작성일자 : ${data.rdt}
+        작성일자 : ${requestScope.data.rdt}
     </div>
     <div>
-        내용 : ${data.ctnt}
+        내용 : ${requestScope.data.ctnt}
     </div>
 
     <div>
